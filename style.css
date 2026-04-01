@@ -1,0 +1,149 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #141414; /* 넷플릭스 다크 배경색 */
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Header */
+.netflix-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 4%;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    z-index: 1000;
+}
+
+.logo {
+    color: #e50914; /* 넷플릭스 고유 빨간색 */
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+.nav-item {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #b3b3b3;
+}
+
+/* Banner */
+.banner {
+    padding: 100px 4% 50px;
+    background: linear-gradient(to right, #141414 20%, transparent),
+                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2670&auto=format&fit=crop') center center/cover;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.banner-desc {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.5;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Movie Grid */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 0 4% 50px;
+}
+
+/* Movie Card Hover Effect (넷플릭스 스타일 애니메이션) */
+.movie-card {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #2f2f2f;
+}
+
+.movie-card:hover {
+    transform: scale(1.05); /* 마우스 호버 시 5% 상향 확대 */
+    z-index: 10;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+.poster-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* Movie Title Info */
+.movie-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 10px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-info {
+    opacity: 1; /* 마우스 호버 시 투명도 1로 서서히 보여줌 */
+}
+
+.movie-title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+
+/* Error / Loading Msg */
+.message {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 50px;
+    color: #e50914;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    .banner-title {
+        font-size: 2rem;
+    }
+}
